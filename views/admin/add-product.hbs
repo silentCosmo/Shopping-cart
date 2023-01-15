@@ -1,0 +1,36 @@
+<section id="undernav">
+    <dvi class="container">
+        <div class="row justify-content-center" style="margin-top: -5rem;">
+
+            <div class="col-md-4 login-box p-4">
+                <div style="margin-bottom: -1rem;">
+                    <h3 class="text-center text-info">Insert Product</h3>
+                    <hr style="width: 44%; margin: auto;" class="text-info">
+                </div>
+                <form action="/admin/add-product" method="post" enctype="multipart/form-data">
+                    <div class="login-form">
+                        <label for="" class="form-control-label">Name</label>
+                        <input type="text" name="Name" class="form-control">
+
+                        <label for="" class="form-control-label">Category</label>
+                        <input type="text" name="Category" class="form-control">
+
+                        <label for="" class="form-control-label">Description</label>
+                        <input type="text" name="Description" class="form-control">
+
+                        <label for="" class="form-control-label">Price</label>
+                        <input type="text" name="Prise" class="form-control">
+
+                        <label for="" class="form-control-label">Image</label>
+                        <br><br>
+                        <input type="file" name="Image" class="form-control">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success mt-3">Add to List</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </dvi>
+</section>

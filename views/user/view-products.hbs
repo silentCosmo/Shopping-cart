@@ -1,0 +1,28 @@
+
+<body>
+
+  <section id="undernav">
+    <div class="container pt-2">
+      <div class="row">
+        {{#each products}}
+        <div class="col-md-3 p-3">
+          <div class="card" style="width: 15rem; height:26rem">
+            <img src="/product-images/{{this._id}}.jpg" class="card-img-top" alt="Database connection error" style="width: 15rem; height: 15rem;">
+            <div class="card-body">
+              <h5 class="card-title"><strong>{{this.Name}}</strong></h5>
+              <p class="card-text">{{this.Description}}</p>
+              <!--<a href="/add-to-cart/{{this._id}}" class="btn btn-warning">Add to cart</a>-->
+              <button class="btn btn-warning" onclick="addToCart('{{this._id}}')">Add to cart</button>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+
+  </section>
+
+
+
+ 
