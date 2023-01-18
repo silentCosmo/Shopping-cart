@@ -1,0 +1,30 @@
+<section id="undernav">
+<div class="container mt-5">
+    <table class="table" style="width: 100%;">
+        <thead>
+            <tr>
+            <th style="width: 15rem;">Date & Time</th>
+            <th>Address</th>
+            <th>Pin</th>
+            <th>mobile</th>
+            <th>Amount</th>
+            <th>Payment</th>
+            <th>Status</th>
+            <th style="width: 9rem;">Products</th>
+            </tr>
+        </thead>
+        {{#each orders}}
+        <tr>
+            <td>{{this.date}}</td>
+            <td>{{this.deliveryDetails.address}}</td>
+            <td>{{this.deliveryDetails.pin}}</td>
+            <td>{{this.deliveryDetails.mobile}}</td>
+            <td>₹{{this.totalAmount}}</td> 
+            <td>{{this.PaymentMethod}}</td>
+            <td>{{this.status}}</td>
+            <td><a href="/view-order-products/{{this._id}}" class="btn btn-primary">View Products</a></td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
+</section>

@@ -2,38 +2,23 @@ var express = require('express');
 const { removeAllProducts, deleteProduct } = require('../helpers/product-helpers');
 const productHelpers = require('../helpers/product-helpers');
 var router = express.Router();
-var productHelper = require('../helpers/product-helpers')
+var productHelper = require('../helpers/product-helpers');
+var adminHelpers = require('../helpers/admin-helper');
+
+
+
+const verifyAdmin = (req,res,next)=>{
+  console.log('admin: '+req.session.admin);
+  if(req.session.adminloggedIn){
+    next()
+  }else{
+    res.redirect('/admin/login')
+  }
+}
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  //res.send('respond with a resource');
-
-  /*let products = [
-    {
-      name:"S22 Ultra",
-      category:"Mobile",
-      description:"The best Android phone than pixel",
-      img:"https://m.media-amazon.com/images/I/71PvHfU+pwL._SL1500_.jpg"
-    },
-    {
-      name:"IPhone 14 Pro Max",
-      category:"Mobile",
-      description:"This is the world best phone ever",
-      img:"https://m.media-amazon.com/images/I/71yzJoE7WlL._SL1500_.jpg"
-    },
-    {
-      name:"Note 9 Pro Max",
-      category:"Mobile",
-      description:"The best Redmi phone of 2020",
-      img:"https://i02.appmifile.com/430_operator_in/30/01/2021/e95cb65d71fa8a1a5e7ee201e1a63d12!800x800!85.png"
-    },
-    {
-      name:"Mi 11 Ultra",
-      category:"Mobile",
-      description:"The best Xiaomi phone of 2021",
-      img:"https://i02.appmifile.com/362_operator_in/23/04/2021/b23987f4a6605e2f4be4562bd0149fd8!800x800!85.png"
-    }
-  ]*/
+router.get('/',verifyAdmin, function(req, res, next) {
+  //req.session.admin.loggedIn = false
   productHelpers.getAllProducts().then((products)=>{
     /*console.log(products)*/
     res.render('admin/view-products',{products,admin:true})
@@ -41,7 +26,7 @@ router.get('/', function(req, res, next) {
   
 });
 
-router.get('/add-product',(req,res)=>{
+router.get('/add-product',verifyAdmin,(req,res)=>{
   res.render('admin/add-product',{admin:true})
 })
 
@@ -65,13 +50,13 @@ router.post('/add-product',(req,res)=>{
   })
 })
 
-router.get('/removeall',(req,res)=>{
+router.get('/removeall',verifyAdmin,(req,res)=>{
   productHelpers.removeAllProducts()
   /*console.log(res)*/
   res.end()
 })
 
-router.get('/delete-product/:id',(req,res)=>{
+router.get('/delete-product/:id',verifyAdmin,(req,res)=>{
   let proId = req.params.id
   console.log(proId);
   productHelpers.deleteProduct(proId).then((response)=>{
@@ -79,7 +64,7 @@ router.get('/delete-product/:id',(req,res)=>{
   })
 })
 
-router.get('/edit-product/:id',async (req,res)=>{
+router.get('/edit-product/:id',verifyAdmin,async (req,res)=>{
   let product = await productHelpers.getProductDetails(req.params.id)
   console.log(product);
   console.log(product.Name);
@@ -98,6 +83,56 @@ router.post('/edit-product/:id',(req,res)=>{
     res.redirect('/admin')
   })
   
+})
+
+router.get('/login',(req,res)=>{
+  if(req.session.adminloggedIn){
+    res.redirect('/admin')
+  }else
+
+    res.render('admin/login',{"loginErr":req.session.adminloginErr})
+    req.session.adminloginErr=false
+})
+
+router.get('/admin-signup',(req,res)=>{
+  if(req.session.adminloggedIn){
+    res.redirect('/')
+  }else{
+    res.render('admin/signup')
+  }
+})
+
+router.post('/signup',(req,res)=>{
+  adminHelpers.doSignup(req.body).then((response)=>{
+  console.log(response);
+  req.session.admin = response
+  req.session.admin.loggedIn=true
+  res.redirect('/')
+})
+})
+
+router.post('/login',(req,res)=>{
+  adminHelpers.doLogin(req.body).then((response)=>{
+    console.log('router Res: '+response.status);
+    if(response.status){
+      req.session.admin = response.admin
+      req.session.adminloggedIn = true
+      res.redirect('/admin')
+    }else{
+      
+      req.session.adminloginErr="Invalid Admin or Password"
+
+      res.redirect('/admin/login')
+    }
+    
+  })
+  
+})
+
+router.get('/logout',(req,res)=>{
+  req.session.destroy()
+  //req.sesssion.admin = null
+  res.redirect('/admin')
 })
 
 module.exports = router;

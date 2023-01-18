@@ -1,0 +1,61 @@
+<section id="undernav">
+
+    <div class="container mt-4">
+        <form action="" method="post" id="checkout-form">
+
+        <div class="row">
+
+            <div class="float-start col-md-6" style="width: 40%;">
+
+                <h2><strong>Enter Delivery Details</strong></h2>
+                <div class="login-form">
+
+
+                    <div class="form-group">
+                        <label for="" class="form-control-label" style="font-size: large;">Address</label> <br><br>
+                        <input class="form-control" type="text" name="address" id="address">
+
+                        <label for="" class="form-control-label" style="font-size: large;">Pin Code</label> <br><br>
+                        <input class="form-control" type="text" name="pin" id="pin">
+
+                        <label for="" class="form-control-label" style="font-size: large;">Mobile</label> <br><br>
+                        <input class="form-control" type="text" name="mobile" id="mobile">
+
+                        <input type="text" name="user" id="" value="{{user._id}}" hidden>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="float-start col-md-3">
+
+                <!--<h2 class="float-end"><strong>Select Payment Option</strong></h2>-->
+                <br><br>
+                <div class="container checkout p-4">
+                    <h5 class="text-center"> <strong>Total Amount : </strong>₹<strong>{{total}}</strong></h5>
+                    <hr>
+
+
+                    <label for="" class="mx-5"><strong>Payment Method</strong></label>
+                    <br><br>
+                    <input type="radio" name="payment-method" id="cod" value="COD" checked> <label for=""><strong>COD</strong></label> <br>
+                    <br>
+                    <input type="radio" name="payment-method" id="online" value="ONLINE"> <label for=""><strong>Online</strong></label>
+                    <br> <br>
+                    <div class="text-center">
+                        <!--<a href="/checkout" class="btn btn-primary px-5"><strong>Checkout</strong></a>-->
+                        <button type="submit" class="btn btn-success px-5">Checkout</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </form>
+    </div>
+
+</section>
+
+<script>
+
+</script>

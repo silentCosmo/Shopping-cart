@@ -1,4 +1,4 @@
-<section id="undernav">
+<section id="undernav" class="bg-cart">
 
     <div class="container">
             <table class="table mt-5">
@@ -7,6 +7,7 @@
                         <th>Number</th>
                         <th>Item</th>
                         <th>Title</th>
+                        <th>Price</th>
                         <th>Quantity</th>
                         <th></th>
                     </tr>
@@ -18,16 +19,53 @@
                     
                     <td><img src="/product-images/{{this.product._id}}.jpg" style="width: 3rem; height: 3rem;" alt=""></td>
                     <td>{{this.product.Name}}</td>
+                    <td>₹ {{this.product.Price}}</td>
                     
                     <td>
-                        <button class="btn btn-secondary me-2" onclick="changeQuantity('{{this._id}}','{{this.product._id}}',-1)">-</button> {{this.quantity}} <span id="inc">{{coco}}</span> <button class="btn btn-secondary ms-2" onclick="changeQuantity('{{this._id}}','{{this.product._id}}',+1)">+</button>
+                        <button class="btn btn-secondary me-2" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
+                        <span id="{{this.product._id}}">{{this.quantity}}</span>
+                        <button class="btn btn-secondary ms-2" onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',+1)">+</button>
                     </td>
-                    <td><button class="btn btn-danger">Remove</button></td>
+                    <td><button class="btn btn-danger" onclick="return confirm('Do you want to remove {{this.product.Name}} from cart?', removeProduct('{{this._id}}','{{this.product._id}}'))">Remove</button></td>
                     
                 </tr>
                 {{/each}}
             </table>
     </div>
+    <hr style="width: 81.7%; margin-left: auto; margin-right: auto; margin-top: -1rem; color: black; opacity: 100%;">
+    <div class="text-end pe-5 me-5">
+        <h6 class="me-5">Total Price : <span id="total">{{totalValue}}</span></h6>
+        <a href="/place-order" class="btn btn-primary me-5 px-4">Place Order</a>
+    </div>
+
+    <div>
+        <form method="post" action="https://secure.payu.com/api/v2_1/orders">
+    <input type="hidden" name="continueUrl" value="http://shop.url/continue">
+    <input type="hidden" name="currencyCode" value="PLN" >
+    <input type="hidden" name="customerIp" value="123.123.123.123" >
+    <input type="hidden" name="description" value="Order description" >
+    <input type="hidden" name="merchantPosId" value="145227" >
+    <input type="hidden" name="notifyUrl" value="http://shop.url/notify" >
+    <input type="hidden" name="products[0].name" value="Product 1" >
+    <input type="hidden" name="products[0].quantity" value="1" >
+    <input type="hidden" name="products[0].unitPrice" value="1000" >
+    <input type="hidden" name="totalAmount" value="1000" >
+    <input type="hidden" name="OpenPayu-Signature" value="sender=145227;algorithm=SHA-256;signature=bc94a8026d6032b5e216be112a5fb7544e66e23e68d44b4283ff495bdb3983a8">
+    <button type="submit" formtarget="_blank" >Pay with PayU</button>
+</form >
+    </div>
+    <style>
+        <style>
+#payu-payment-form button[type=submit] {
+    border: 0px;
+    height: 35px;
+    width: 140px;
+    background: url('http://static.payu.com/pl/standard/partners/buttons/payu_account_button_long_03.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+</style>
+    </style>
 
 </section>
 

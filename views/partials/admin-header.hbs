@@ -27,6 +27,26 @@
             <button class="btn btn-outline-info" type="submit">Search</button>
           </form>
         </div>
+
+        <div class="dropdown ps-2">
+          <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            {{#if admin}}
+            Admin In
+                <!--{{admin.Name}}-->
+              {{else}}
+                 Account
+            {{/if}}
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            {{#if admin}}
+              <li><a class="dropdown-item text-danger" href="/admin/logout">LogOut</a></li>
+            {{else}}
+              <li><a class="dropdown-item text-primary" href="/login">LogIn</a></li>
+            {{/if}}
+          </ul>
+        </div>
+
       </div>
     </nav>
   </header>

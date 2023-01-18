@@ -20,7 +20,8 @@
     "mongod": "^2.0.0",
     "mongodb": "^3.6.1",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "pay-u": "0.0.414"
   },
   "main": "app.js",
   "devDependencies": {},

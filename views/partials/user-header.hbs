@@ -17,20 +17,20 @@
               aria-expanded="false">
               Category
             </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Electronics</a></li>
-              <li><a class="dropdown-item" href="#">Mobiles</a></li>
+            <ul class="dropdown-menu bg-dark tw" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item tw" href="#">Electronics</a></li>
+              <li><a class="dropdown-item tw" href="#">Mobiles</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Entertiment</a></li>
-              <li><a class="dropdown-item" href="#">Audio Books</a></li>
-              <li><a class="dropdown-item" href="#">E-Books</a></li>
+              <li><a class="dropdown-item tw" href="#">Entertiment</a></li>
+              <li><a class="dropdown-item tw" href="#">Audio Books</a></li>
+              <li><a class="dropdown-item tw" href="#">E-Books</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Audio Books</a></li>
-              <li><a class="dropdown-item" href="#">E-Books</a></li>
+              <li><a class="dropdown-item tw" href="#">Audio Books</a></li>
+              <li><a class="dropdown-item tw" href="#">E-Books</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -38,7 +38,7 @@
           </li>
             {{#if user}}
               <li class="nav-item">
-              <a class="nav-link" href="#">Orders</a>
+              <a class="nav-link" href="/orders">Orders</a>
               </li>
           {{/if}}
           <!--<li class="nav-item">
@@ -65,8 +65,8 @@
             {{#if user}}
               <li><a class="dropdown-item text-danger" href="/logout">LogOut</a></li>
             {{else}}
-              <li><a class="dropdown-item text-success" href="/login">LogIn</a></li>
-              <li><a class="dropdown-item text-success" href="/signup">SignUp</a></li>
+              <li><a class="dropdown-item text-primary" href="/login">LogIn</a></li>
+              <li><a class="dropdown-item text-primary" href="/signup">SignUp</a></li>
             {{/if}}
           </ul>
         </div>

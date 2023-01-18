@@ -1,0 +1,38 @@
+<section id="undernav" class="bg-cart">
+
+    <div class="container">
+            <table class="table mt-5">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>Item</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        
+                    </tr>
+                </thead>
+                {{#each products}}
+                <tr>
+                    
+                    <td>{{@index}}</td>
+                    
+                    <td><img src="/product-images/{{this.product._id}}.jpg" style="width: 3rem; height: 3rem;" alt=""></td>
+                    <td>{{this.product.Name}}</td>
+                    <td>₹ {{this.product.Price}}</td>
+                    
+                    <td> <span id="{{this.product._id}}">{{this.quantity}}</span> </td>
+                    
+                </tr>
+                {{/each}}
+            </table>
+    </div>
+    <hr style="width: 81.7%; margin-left: auto; margin-right: auto; margin-top: -1rem; color: black; opacity: 100%;">
+    <!--<div class="text-end pe-5 me-5">
+        
+        <h6 class="me-5">Total Price : <span id="total">{{orderPrice}}</span></h6>
+        
+        
+    </div>-->
+
+</section>

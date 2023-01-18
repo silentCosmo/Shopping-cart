@@ -9,13 +9,28 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!--Mylcss-->
-    <link rel="stylesheet" href="/stylesheets/style.css">
+  <!--My css-->
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 
-  <title>XCart</title>
+  {{!-- DataTable&Search --}}
+
+  {{!-- <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script> --}}
+
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+    {{!-- <script src="/javascripts/datatables.js"></script> --}}
+
+  
+
+  <title>Ammuzon</title>
 </head>
 
-<body> 
+<body>
   {{#if admin}}
   {{>admin-header}}
   {{else}}
@@ -26,13 +41,19 @@
 
 
   <!-- Optional JavaScript; choose one of the two! -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+    integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 
   <script src="/javascripts/script.js"></script>
+  {{!--
+  <script src="/javascripts/bootstrap.bundle.js"></script> --}}
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+
+  {{!-- DataTable&Search --}}
 
   <!-- Option 2: Separate Popper and Bootstrap JS -->
   <!--

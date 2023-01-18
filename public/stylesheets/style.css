@@ -170,3 +170,25 @@ label {
 .loginbttm {
   padding: 0px;
 }
+
+td{
+  font-size: larger;
+}
+
+.checkout{
+  background-color: whitesmoke;
+  border: solid 1px;
+  border-color: #263238;
+  margin-top: 4.2rem;
+  margin-left: 15rem;
+  width: 18rem;
+}
+
+#opgif{
+  width: 14rem;
+  height: 10rem;
+  border-radius: 180px;
+}
+.tw{
+  color: rgba(245, 245, 245, 0.774);
+}

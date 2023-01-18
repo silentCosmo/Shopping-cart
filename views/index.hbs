@@ -7,9 +7,10 @@
         {{#each products}}
         <div class="col-md-3">
           <div class="card" style="width: 15rem;">
-            <img src="/product-images/{{this._id}}.jpg" class="card-img-top" alt="ShoRryGuysH">
+            <img src="/product-images/{{this._id}}.jpg" class="card-img-top" alt="SaRryGuysH">
             <div class="card-body">
-              <h5 class="card-title">{{this.Name}}</h5>
+              <h5 class="card-title">{{this.Name}}{{this.Prise}}</h5>
+              <h5 class="cart-text">jk</h5>
               <p class="card-text">{{this.Description}}</p>
               <a href="#" class="btn btn-warning">Add to cart</a>
             </div>
